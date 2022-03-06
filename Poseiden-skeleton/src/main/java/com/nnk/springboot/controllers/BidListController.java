@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Controller
 public class BidListController {
@@ -41,8 +42,10 @@ public class BidListController {
     }
 
     @GetMapping("/bidList/update/{id}")
-    public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
+    public String showUpdateForm(@PathVariable("id") Long id, Model model) {
         // TODO: get Bid by Id and to model then show to the form
+        BidList bidlist = bidListRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Bid " + id + " does not exist"));
+        model.addAttribute("bidId", bidlist.getId());
         return "bidList/update";
     }
 
@@ -50,6 +53,10 @@ public class BidListController {
     public String updateBid(@PathVariable("id") Integer id, @Valid BidList bidList,
                              BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update Bid and return list Bid
+        if (result.hasErrors()) {
+            return "bidList/update";
+        }
+        //maj du bidlist dans la bdd
         return "redirect:/bidList/list";
     }
 

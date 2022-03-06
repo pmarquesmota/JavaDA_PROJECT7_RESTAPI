@@ -1,15 +1,22 @@
 package com.nnk.springboot.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.sql.Timestamp;
+import lombok.*;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "bidlist")
 public class BidList {
-    @javax.persistence.Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     @Column
     Long id;
+
+    // exemple : ne doit jamais être vide
+    @NotBlank(message = "ce champ ne doit pas être vide")
     @Column
     String  account;
     @Column
@@ -53,11 +60,9 @@ public class BidList {
     @Column
     String  side;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public BidList(String  account, String  type, Double  bidQuantity){
+        this.account = account;
+        this.type = type;
+        this.bidQuantity = bidQuantity;
     }
 }

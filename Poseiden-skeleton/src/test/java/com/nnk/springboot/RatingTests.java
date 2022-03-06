@@ -11,7 +11,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 import java.util.Optional;
+import lombok.*;
 
+@Getter
+@Setter
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class RatingTests {
