@@ -43,6 +43,10 @@
 					<td th:text="${bid.account}" />
 					<td th:text="${bid.type}" />
 					<td th:text="${bid.bidQuantity}" />
+					<td>
+						<a th:href="@{/bidList/update/{id}(id=${bid.id})}" class="btn btn-primary btn-sm">Edit</a>
+						<a th:href="@{/bidList/delete/{id}(id=${bid.id})}" class="btn btn-danger btn-sm">Delete</a>
+					</td>
 				</tr>
 			</tbody>
 		</table>

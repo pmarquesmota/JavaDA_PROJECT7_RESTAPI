@@ -2,14 +2,21 @@ package com.nnk.springboot.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @Entity
 @Table(name = "bidlist")
 public class BidList {
+    @With
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column
@@ -17,6 +24,7 @@ public class BidList {
 
     // exemple : ne doit jamais être vide
     @NotBlank(message = "ce champ ne doit pas être vide")
+    @Size(min = 5, message = "Minimum 5 caractères.")
     @Column
     String  account;
     @Column
@@ -31,8 +39,9 @@ public class BidList {
     Double  ask;
     @Column
     String  benchmark;
+    //@JsonFormat(pattern = "dd/mm/YYYY")
     @Column
-    Timestamp  bidListDate;
+    LocalDateTime  bidListDate;
     @Column
     String  commentary;
     @Column
@@ -46,11 +55,11 @@ public class BidList {
     @Column
     String  creationName;
     @Column
-    Timestamp  creationDate;
+    LocalDateTime  creationDate;
     @Column
     String  revisionName;
     @Column
-    Timestamp  revisionDate;
+    LocalDateTime revisionDate;
     @Column
     String  dealName;
     @Column

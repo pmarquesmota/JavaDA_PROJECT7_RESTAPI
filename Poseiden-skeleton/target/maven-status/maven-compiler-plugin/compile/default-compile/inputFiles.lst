@@ -1,3 +1,4 @@
+/Users/comte0/openclassrooms/JavaDA_PROJECT7_RESTAPI/Poseiden-skeleton/src/main/java/com/nnk/springboot/security/SpringSecurityConfig.java
 /Users/comte0/openclassrooms/JavaDA_PROJECT7_RESTAPI/Poseiden-skeleton/src/main/java/com/nnk/springboot/repositories/UserRepository.java
 /Users/comte0/openclassrooms/JavaDA_PROJECT7_RESTAPI/Poseiden-skeleton/src/main/java/com/nnk/springboot/controllers/UserController.java
 /Users/comte0/openclassrooms/JavaDA_PROJECT7_RESTAPI/Poseiden-skeleton/src/main/java/com/nnk/springboot/domain/RuleName.java
@@ -5,6 +6,7 @@
 /Users/comte0/openclassrooms/JavaDA_PROJECT7_RESTAPI/Poseiden-skeleton/src/main/java/com/nnk/springboot/domain/User.java
 /Users/comte0/openclassrooms/JavaDA_PROJECT7_RESTAPI/Poseiden-skeleton/src/main/java/com/nnk/springboot/repositories/TradeRepository.java
 /Users/comte0/openclassrooms/JavaDA_PROJECT7_RESTAPI/Poseiden-skeleton/src/main/java/com/nnk/springboot/controllers/TradeController.java
+/Users/comte0/openclassrooms/JavaDA_PROJECT7_RESTAPI/Poseiden-skeleton/src/main/java/com/nnk/springboot/service/BidListService.java
 /Users/comte0/openclassrooms/JavaDA_PROJECT7_RESTAPI/Poseiden-skeleton/src/main/java/com/nnk/springboot/controllers/RuleNameController.java
 /Users/comte0/openclassrooms/JavaDA_PROJECT7_RESTAPI/Poseiden-skeleton/src/main/java/com/nnk/springboot/controllers/CurveController.java
 /Users/comte0/openclassrooms/JavaDA_PROJECT7_RESTAPI/Poseiden-skeleton/src/main/java/com/nnk/springboot/Application.java
