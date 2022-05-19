@@ -17,16 +17,13 @@ import java.util.NoSuchElementException;
 public class BidListController {
     // TODO: Inject Bid service
     @Autowired
-    BidListRepository bidListRepository;
-
-    @Autowired
     BidListService bidListService;
 
     @RequestMapping("/bidList/list")
     public String home(Model model)
     {
         // TODO: call service find all bids to show to the view
-        List <BidList> bids = bidListRepository.findAll();
+        List <BidList> bids = bidListService.getBids();
         model.addAttribute("bids", bids);
         return "bidList/list";
     }
@@ -43,16 +40,21 @@ public class BidListController {
         if (result.hasErrors()) {
             return "bidList/add";
         }
-        bidListRepository.save(bid);
+        bidListService.setBid(bid);
         return "redirect:/bidList/list";
     }
 
     @GetMapping("/bidList/update/{id}")
     public String showUpdateForm(@PathVariable("id") Long id, Model model) {
         // TODO: get Bid by Id and to model then show to the form
-        BidList bidlist = bidListRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Bid " + id + " does not exist"));
-        model.addAttribute("bidList", bidlist);
-        return "bidList/update";
+        try {
+            BidList bidList = bidListService.getBid(id);
+            model.addAttribute("bidList", bidList);
+            return "bidList/update";
+        } catch (NoSuchElementException e){
+            model.addAttribute("message", "Cet id n'existe pas.");
+            return "redirect:/bidList/update";
+        }
     }
 
     @PostMapping("/bidList/update/{id}")
@@ -75,7 +77,7 @@ public class BidListController {
     @GetMapping("/bidList/delete/{id}")
     public String deleteBid(@PathVariable("id") Long id, Model model) {
         // TODO: Find Bid by Id and delete the bid, return to Bid list
-        bidListRepository.deleteById(id);
+        bidListService.deleteBid(id);
         return "redirect:/bidList/list";
     }
 }
