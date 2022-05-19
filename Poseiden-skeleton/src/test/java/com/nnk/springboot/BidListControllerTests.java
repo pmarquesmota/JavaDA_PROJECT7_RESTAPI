@@ -6,6 +6,7 @@ import com.nnk.springboot.repositories.BidListRepository;
 import com.nnk.springboot.service.BidListService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -15,8 +16,13 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
-import static org.mockito.Mockito.when;
+import static org.hamcrest.Matchers.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
@@ -31,14 +37,19 @@ public class BidListControllerTests {
     @MockBean
     BidListService bidListService;
 
-    @MockBean
-    BidListRepository bidListRepository;
+    @Test
+    public void failUrl(){
+        try {
+            mvc.perform(get("/bidList/toto"))
+                    .andExpect(status().isNotFound());
+        }catch (Exception e){
+        }
+    }
 
     @Test
-    public void showAddTodoForm() throws Exception {
+    public void bidListList() throws Exception {
         List<BidList> bids = new ArrayList<>();
-        when(bidListRepository.findAll()).thenReturn(bids);
-
+        when(bidListService.getBids()).thenReturn(bids);
         mvc.perform(get("/bidList/list"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("bidList/list"));
@@ -48,4 +59,129 @@ public class BidListControllerTests {
                // .andExpect(model().attribute("bids", hasProperty("title", isEmptyOrNullString())));
     }
 
+    @Test
+    public void bidListAdd() throws Exception {
+        mvc.perform(get("/bidList/add"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("bidList/add"))
+                .andExpect(model().attribute("fields", hasProperty("errors",nullValue())));
+        // .andExpect(forwardedUrl("/bidList/list"));
+        // .andExpect(model().attribute("bids", hasProperty("id", nullValue())))
+        // .andExpect(model().attribute("bids", hasProperty("description", isEmptyOrNullString())))
+        // .andExpect(model().attribute("bids", hasProperty("title", isEmptyOrNullString())));
+    }
+
+    @Test
+    public  void bidListValidateWithoutErrors(){
+        try {
+            doNothing().when(bidListService).setBid(any());
+
+            mvc.perform(post("/bidList/validate")
+                            .param("account", "toto55"))
+                    .andExpect(status().isFound())
+                    .andExpect(redirectedUrl("/bidList/list"));
+        } catch (Exception e){
+
+        }
+    }
+
+    @Test
+    public  void bidListValidateWithErrors(){
+        try {
+            doNothing().when(bidListService).setBid(any());
+
+            mvc.perform(post("/bidList/validate")
+                        .param("account", "toto"))
+                    .andExpect(status().isOk())
+                    .andExpect(view().name("bidList/add"));
+        } catch (Exception e){
+
+        }
+    }
+
+    @Test
+    public void bidListGetUpdateWithoutErrors() {
+        BidList bid = new BidList();
+        when(bidListService.getBid(anyLong())).thenReturn(bid);
+
+        try {
+            mvc.perform(get("/bidList/update/42"))
+                    .andExpect(status().isOk())
+                    .andExpect(view().name("bidList/update"))
+                    .andExpect(model().attribute("bidList", is(bid)));
+
+        } catch (Exception e){
+
+        }
+    }
+
+    @Test
+    public void bidListGetUpdateWithErrors() {
+        doThrow(new NoSuchElementException()).when(bidListService).getBid(anyLong());
+
+        try {
+            mvc.perform(get("/bidList/update/42"))
+                    .andExpect(status().isFound())
+                    .andExpect(redirectedUrl("/bidList/update"))
+                    .andExpect(model().attribute("message", is("Cet id n'existe pas.")));
+
+        } catch (Exception e){
+
+        }
+    }
+
+    @Test
+    public void  bidListPostUpdateWithoutErrors(){
+        doNothing().when(bidListService).updateBid(anyLong(),any());
+
+        try {
+            mvc.perform(post("/bidList/update/42")
+                        .param("account", "toto55"))
+                    .andExpect(status().isFound())
+                    .andExpect(redirectedUrl("/bidList/list"));
+        } catch (Exception e){
+
+        }
+    }
+
+    @Test
+    public void  bidListPostUpdateWithErrors(){
+        try {
+            mvc.perform(post("/bidList/update/42")
+                            .param("account", "toto"))
+                    .andExpect(status().isOk())
+                    .andExpect(view().name("bidList/update"));
+        } catch (Exception e){
+
+        }
+    }
+    @Test
+    public void bidListPostUpdateWithException() {
+        doThrow(new NoSuchElementException()).when(bidListService).updateBid(anyLong(),any());
+
+        try {
+            mvc.perform(post("/bidList/update/42")
+                    .param("account", "toto55"))
+                    .andExpect(status().isFound())
+                    .andExpect(redirectedUrl("/bidList/list"))
+                    .andExpect(model().attribute("message", is("Cet id n'existe pas.")));
+
+        } catch (Exception e){
+
+        }
+    }
+
+    @Test
+    public void bidListDelete(){
+        doNothing().when(bidListService).deleteBid(anyLong());
+
+        try {
+            mvc.perform(get("/bidList/delete/42"))
+                    .andExpect(status().isFound())
+                    .andExpect(redirectedUrl("/bidList/list"));
+        } catch (Exception e){
+
+        }
+
+    }
 }
