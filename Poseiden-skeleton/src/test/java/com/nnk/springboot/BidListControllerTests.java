@@ -2,18 +2,15 @@ package com.nnk.springboot;
 
 import com.nnk.springboot.controllers.BidListController;
 import com.nnk.springboot.domain.BidList;
-import com.nnk.springboot.repositories.BidListRepository;
 import com.nnk.springboot.service.BidListService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,83 +98,64 @@ public class BidListControllerTests {
     }
 
     @Test
-    public void bidListGetUpdateWithoutErrors() {
+    public void bidListGetUpdateWithoutErrors() throws Exception {
         BidList bid = new BidList();
         when(bidListService.getBid(anyLong())).thenReturn(bid);
 
-        try {
-            mvc.perform(get("/bidList/update/42"))
+        mvc.perform(get("/bidList/update/42"))
                     .andExpect(status().isOk())
                     .andExpect(view().name("bidList/update"))
                     .andExpect(model().attribute("bidList", is(bid)));
 
-        } catch (Exception e){
-
-        }
     }
 
     @Test
     public void bidListGetUpdateWithErrors() throws Exception {
         doThrow(new NoSuchElementException()).when(bidListService).getBid(anyLong());
 
-            mvc.perform(get("/bidList/update/42"))
+        mvc.perform(get("/bidList/update/42"))
                     .andExpect(status().isFound())
-                    .andExpect(redirectedUrl("/bidList/update"))
+                    .andExpect(redirectedUrl("/bidList/list"))
                     .andExpect(flash().attribute("message", "Cet id n'existe pas."));
     }
 
     @Test
-    public void  bidListPostUpdateWithoutErrors(){
+    public void  bidListPostUpdateWithoutErrors() throws Exception {
         doNothing().when(bidListService).updateBid(anyLong(),any());
 
-        try {
-            mvc.perform(post("/bidList/update/42")
+        mvc.perform(post("/bidList/update/42")
                         .param("account", "toto55"))
                     .andExpect(status().isFound())
                     .andExpect(redirectedUrl("/bidList/list"));
-        } catch (Exception e){
-
-        }
     }
 
     @Test
-    public void  bidListPostUpdateWithErrors(){
-        try {
-            mvc.perform(post("/bidList/update/42")
+    public void  bidListPostUpdateWithErrors() throws Exception {
+        mvc.perform(post("/bidList/update/42")
                             .param("account", "toto"))
                     .andExpect(status().isOk())
                     .andExpect(view().name("bidList/update"));
-        } catch (Exception e){
 
-        }
     }
     @Test
-    public void bidListPostUpdateWithException() {
+    public void bidListPostUpdateWithException() throws Exception {
         doThrow(new NoSuchElementException()).when(bidListService).updateBid(anyLong(),any());
 
-        try {
-            mvc.perform(post("/bidList/update/42")
+        mvc.perform(post("/bidList/update/42")
                     .param("account", "toto55"))
                     .andExpect(status().isFound())
                     .andExpect(redirectedUrl("/bidList/list"))
-                    .andExpect(model().attribute("message", is("Cet id n'existe pas.")));
+                    .andExpect(flash().attribute("message", "Cet id n'existe pas."));
 
-        } catch (Exception e){
-
-        }
     }
 
     @Test
-    public void bidListDelete(){
+    public void bidListDelete() throws Exception {
         doNothing().when(bidListService).deleteBid(anyLong());
 
-        try {
-            mvc.perform(get("/bidList/delete/42"))
+        mvc.perform(get("/bidList/delete/42"))
                     .andExpect(status().isFound())
                     .andExpect(redirectedUrl("/bidList/list"));
-        } catch (Exception e){
-
-        }
 
     }
 }

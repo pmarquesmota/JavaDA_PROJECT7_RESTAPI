@@ -63,7 +63,7 @@ public class BidListController {
 
     @PostMapping("/bidList/update/{id}")
     public String updateBid(@PathVariable("id") Long id, @Valid BidList bidList,
-                             BindingResult result, Model model) {
+                             BindingResult result, Model model, RedirectAttributes redirectAttributes) {
         // TODO: check required fields, if valid call service to update Bid and return list Bid
         if (result.hasErrors()) {
             return "bidList/update";
@@ -73,7 +73,7 @@ public class BidListController {
             bidListService.updateBid(id, bidList);
             return "redirect:/bidList/list";
         } catch (NoSuchElementException e){
-            model.addAttribute("message", "Cet id n'existe pas.");
+            redirectAttributes.addFlashAttribute("message", "Cet id n'existe pas.");
             return "redirect:/bidList/list";
         }
     }
