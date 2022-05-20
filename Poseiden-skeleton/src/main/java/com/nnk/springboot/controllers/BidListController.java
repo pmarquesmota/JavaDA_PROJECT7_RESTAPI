@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.thymeleaf.spring5.ISpringTemplateEngine;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -17,6 +19,9 @@ public class BidListController {
     // TODO: Inject Bid service
     @Autowired
     BidListService bidListService;
+
+    @Autowired
+    ISpringTemplateEngine template;
 
     @RequestMapping("/bidList/list")
     public String home(Model model)
@@ -44,15 +49,15 @@ public class BidListController {
     }
 
     @GetMapping("/bidList/update/{id}")
-    public String showUpdateForm(@PathVariable("id") Long id, Model model) {
+    public String showUpdateForm(@PathVariable("id") Long id, Model model, RedirectAttributes redirectAttributes) {
         // TODO: get Bid by Id and to model then show to the form
         try {
             BidList bidList = bidListService.getBid(id);
             model.addAttribute("bidList", bidList);
             return "bidList/update";
         } catch (NoSuchElementException e){
-            model.addAttribute("message", "Cet id n'existe pas.");
-            return "redirect:/bidList/update";
+            redirectAttributes.addFlashAttribute("message", "Cet id n'existe pas.");
+            return "redirect:/bidList/list";
         }
     }
 

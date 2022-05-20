@@ -13,6 +13,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,8 +64,8 @@ public class BidListControllerTests {
     public void bidListAdd() throws Exception {
         mvc.perform(get("/bidList/add"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("bidList/add"))
-                .andExpect(model().attribute("fields", hasProperty("errors",nullValue())));
+                .andExpect(view().name("bidList/add"));
+        //.andExpect(model().attribute("fields", hasProperty("errors",nullValue())));
         // .andExpect(forwardedUrl("/bidList/list"));
         // .andExpect(model().attribute("bids", hasProperty("id", nullValue())))
         // .andExpect(model().attribute("bids", hasProperty("description", isEmptyOrNullString())))
@@ -116,18 +117,13 @@ public class BidListControllerTests {
     }
 
     @Test
-    public void bidListGetUpdateWithErrors() {
+    public void bidListGetUpdateWithErrors() throws Exception {
         doThrow(new NoSuchElementException()).when(bidListService).getBid(anyLong());
 
-        try {
             mvc.perform(get("/bidList/update/42"))
                     .andExpect(status().isFound())
                     .andExpect(redirectedUrl("/bidList/update"))
-                    .andExpect(model().attribute("message", is("Cet id n'existe pas.")));
-
-        } catch (Exception e){
-
-        }
+                    .andExpect(flash().attribute("message", "Cet id n'existe pas."));
     }
 
     @Test

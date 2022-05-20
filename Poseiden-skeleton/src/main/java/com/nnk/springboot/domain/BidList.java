@@ -3,11 +3,12 @@ package com.nnk.springboot.domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -40,8 +41,9 @@ public class BidList {
     @Column
     String  benchmark;
     //@JsonFormat(pattern = "dd/mm/YYYY")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column
-    LocalDateTime  bidListDate;
+    Date bidListDate;
     @Column
     String  commentary;
     @Column
@@ -54,12 +56,14 @@ public class BidList {
     String  book;
     @Column
     String  creationName;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column
-    LocalDateTime  creationDate;
+    Date creationDate;
     @Column
     String  revisionName;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column
-    LocalDateTime revisionDate;
+    Date revisionDate;
     @Column
     String  dealName;
     @Column

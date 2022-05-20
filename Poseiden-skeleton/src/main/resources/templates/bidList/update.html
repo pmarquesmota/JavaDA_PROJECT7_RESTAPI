@@ -54,7 +54,7 @@
 			</div>
 			<div class="form-group">
 				<label for="bidListDate">bidListDate</label>
-				<input type="text" name="bidListDate" th:field="*{bidListDate}" class="form-control" id="bidListDate" aria-describedby="bidListDate">
+				<input type="date" name="bidListDate" th:field="*{bidListDate}" class="form-control" id="bidListDate" aria-describedby="bidListDate">
 				<p th:if="${#fields.hasErrors('bidListDate')}" th:errorclass="error" th:errors="*{bidListDate}"></p>
 			</div>
 			<div class="form-group">
