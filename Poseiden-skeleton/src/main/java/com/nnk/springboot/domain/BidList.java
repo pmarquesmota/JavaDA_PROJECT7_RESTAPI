@@ -3,8 +3,6 @@ package com.nnk.springboot.domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 import lombok.*;
@@ -56,7 +54,7 @@ public class BidList {
     String  book;
     @Column
     String  creationName;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column
     Date creationDate;
     @Column

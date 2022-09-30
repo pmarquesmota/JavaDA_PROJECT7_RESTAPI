@@ -1,21 +1,28 @@
 package com.nnk.springboot.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.sql.Timestamp;
+import java.util.Date;
+
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
-
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @Entity
 @Table(name = "trade")
 public class Trade {
     // TODO: Map columns in data table TRADE with corresponding java fields
+    @With
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column
-    Integer  tradeId;
+    Long  tradeId;
     @Column
+    @Size(min = 5, message = "Minimum 5 caractères.")
     String  account;
     @Column
     String  type;
@@ -30,7 +37,8 @@ public class Trade {
     @Column
     String  benchmark;
     @Column
-    Timestamp tradeDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    Date tradeDate;
     @Column
     String  security;
     @Column
@@ -42,11 +50,13 @@ public class Trade {
     @Column
     String  creationName;
     @Column
-    Timestamp  creationDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    Date  creationDate;
     @Column
     String  revisionName;
     @Column
-    Timestamp  revisionDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    Date  revisionDate;
     @Column
     String  dealName;
     @Column

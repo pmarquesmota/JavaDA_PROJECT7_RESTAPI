@@ -13,10 +13,39 @@
 	</div>
 
 	<div class="row">
-		<form action="#" th:action="@{/curvePoint/update/{id}(id=${curvePoint.id})}" th:object="${curvePoint}" method="post" class="form-horizontal" style="width: 100%">
+		<form th:action="@{/CurvePoint/update/{id}(id=${curvePoint.id})}" th:object="${curvePoint}" method="post" class="form-horizontal" style="width: 100%">
 			<!--
 			TODO: Create a form to edit the values of CurvePoint, there are 2 buttons: Update data and Cancel to the Curve Point
 			 -->
+			<div class="form-group">
+				<label for="curveId">CurveId</label>
+				<input type="text" name="curveId" th:field="*{curveId}" class="form-control" id="curveId" aria-describedby="curveId">
+				<p th:if="${#fields.hasErrors('curveId')}" th:errorclass="error" th:errors="*{curveId}"></p>
+			</div>
+			<div class="form-group">
+				<label for="asOfDate">asOfDate</label>
+				<input type="text" name="asOfDate" th:field="*{asOfDate}" class="form-control" id="asOfDate" aria-describedby="asOfDate">
+				<p th:if="${#fields.hasErrors('asOfDate')}" th:errorclass="error" th:errors="*{asOfDate}"></p>
+			</div>
+			<div class="form-group">
+				<label for="term">term</label>
+				<input type="text" name="term" th:field="*{term}" class="form-control" id="term" aria-describedby="term">
+				<p th:if="${#fields.hasErrors('term')}" th:errorclass="error" th:errors="*{term}"></p>
+			</div>
+			<div class="form-group">
+				<label for="value">value</label>
+				<input type="text" name="value" th:field="*{value}" class="form-control" id="value" aria-describedby="value">
+				<p th:if="${#fields.hasErrors('value')}" th:errorclass="error" th:errors="*{value}"></p>
+			</div>
+			<div class="form-group">
+				<label for="creationDate">creationDate</label>
+				<input type="text" name="creationDate" th:field="*{creationDate}" class="form-control" id="creationDate" aria-describedby="creationDate">
+				<p th:if="${#fields.hasErrors('creationDate')}" th:errorclass="error" th:errors="*{creationDate}"></p>
+			</div>
+
+			<button type="submit" class="btn btn-primary">Update data</button>
+			<button type="submit" formaction="/CurvePoint/list" class="btn btn-primary">Cancel</button>
+
 		</form>
 	</div>
 

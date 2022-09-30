@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.thymeleaf.spring5.ISpringTemplateEngine;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -19,9 +18,6 @@ public class BidListController {
     // TODO: Inject Bid service
     @Autowired
     BidListService bidListService;
-
-    @Autowired
-    ISpringTemplateEngine template;
 
     @RequestMapping("/bidList/list")
     public String home(Model model)

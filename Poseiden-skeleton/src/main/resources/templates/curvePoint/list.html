@@ -30,14 +30,28 @@
 			<thead>
 				<tr>
 					<th>Id</th>
-					<th>CurvePointId</th>
+					<th>curveId</th>
+					<th>asOfDate</th>
 					<th>Term</th>
 					<th>Value</th>
+					<th>CreationDate</th>
 					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
 			<!-- TODO: Show all CurvePoint to the table, the action column will have Edit & Delete buttons -->
+			<tr th:each="CurvePoint: ${CurvePoints}">
+				<td th:text="${CurvePoint.id}" />
+				<td th:text="${CurvePoint.curveId}" />
+				<td th:text="${CurvePoint.asOfDate}" />
+				<td th:text="${CurvePoint.term}" />
+				<td th:text="${CurvePoint.value}" />
+				<td th:text="${CurvePoint.creationDate}" />
+				<td>
+					<a th:href="@{/CurvePoint/update/{id}(id=${CurvePoint.id})}" class="btn btn-primary btn-sm">Edit</a>
+					<a th:href="@{/CurvePoint/delete/{id}(id=${CurvePoint.id})}" class="btn btn-danger btn-sm">Delete</a>
+				</td>
+			</tr>
 			</tbody>
 		</table>
 	</div>
