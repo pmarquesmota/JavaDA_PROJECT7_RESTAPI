@@ -19,5 +19,11 @@ public class HomeController
 		return "redirect:/bidList/list";
 	}
 
+	@RequestMapping("/login*")
+	public void github(Model model)
+	{
+		System.out.println("yes");
+		//return "redirect:/bidList/list";
+	}
 
 }

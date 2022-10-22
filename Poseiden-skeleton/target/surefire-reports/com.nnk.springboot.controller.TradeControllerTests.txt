@@ -1,4 +1,44 @@
 -------------------------------------------------------------------------------
 Test set: com.nnk.springboot.controller.TradeControllerTests
 -------------------------------------------------------------------------------
-Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.108 s - in com.nnk.springboot.controller.TradeControllerTests
+Tests run: 11, Failures: 10, Errors: 0, Skipped: 0, Time elapsed: 2.838 s <<< FAILURE! - in com.nnk.springboot.controller.TradeControllerTests
+tradeGetUpdateWithErrors  Time elapsed: 0.073 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<404>
+	at com.nnk.springboot.controller.TradeControllerTests.tradeGetUpdateWithErrors(TradeControllerTests.java:100)
+
+tradeValidateWithoutErrors  Time elapsed: 0.009 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<404>
+	at com.nnk.springboot.controller.TradeControllerTests.tradeValidateWithoutErrors(TradeControllerTests.java:67)
+
+tradePostUpdateWithoutErrors  Time elapsed: 0.008 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<404>
+	at com.nnk.springboot.controller.TradeControllerTests.tradePostUpdateWithoutErrors(TradeControllerTests.java:111)
+
+tradeGetUpdateWithoutErrors  Time elapsed: 0.006 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.nnk.springboot.controller.TradeControllerTests.tradeGetUpdateWithoutErrors(TradeControllerTests.java:89)
+
+tradePostUpdateWithErrors  Time elapsed: 0.005 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.nnk.springboot.controller.TradeControllerTests.tradePostUpdateWithErrors(TradeControllerTests.java:119)
+
+tradeList  Time elapsed: 0.005 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.nnk.springboot.controller.TradeControllerTests.tradeList(TradeControllerTests.java:50)
+
+tradeValidateWithErrors  Time elapsed: 0.006 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.nnk.springboot.controller.TradeControllerTests.tradeValidateWithErrors(TradeControllerTests.java:78)
+
+tradeAdd  Time elapsed: 0.009 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.nnk.springboot.controller.TradeControllerTests.tradeAdd(TradeControllerTests.java:57)
+
+tradeDelete  Time elapsed: 0.003 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<404>
+	at com.nnk.springboot.controller.TradeControllerTests.tradeDelete(TradeControllerTests.java:140)
+
+tradePostUpdateWithException  Time elapsed: 0.006 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<404>
+	at com.nnk.springboot.controller.TradeControllerTests.tradePostUpdateWithException(TradeControllerTests.java:129)
+

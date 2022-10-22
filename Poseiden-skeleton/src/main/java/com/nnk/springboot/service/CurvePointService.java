@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
 @Service
 public class CurvePointService {
     @Autowired
-    CurvePointRepository curvePointRepository;
+    private CurvePointRepository curvePointRepository;
 
     public List<CurvePoint> getCurvePoints(){
         return curvePointRepository.findAll();

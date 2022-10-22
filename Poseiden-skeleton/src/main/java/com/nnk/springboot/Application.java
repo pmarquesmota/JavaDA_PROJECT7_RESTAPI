@@ -1,27 +1,32 @@
 package com.nnk.springboot;
 
-import org.springframework.boot.CommandLineRunner;
+import com.nnk.springboot.domain.User;
+import com.nnk.springboot.service.UserDetailsServiceImpl;
+import com.nnk.springboot.service.UserServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.JdbcUserDetailsManager;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.annotation.PostConstruct;
 
 @SpringBootApplication
 public class Application{
+	@Autowired
+	private UserServiceImpl userService;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(Application.class, args);
 	}
 
+	@PostConstruct
+	public void init(){
+		User user = new User("admin",passwordEncoder.encode("admin"),"admin","ADMIN");
+		userService.createUser(user);
+	}
 }

@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
 @Service
 public class RatingService {
     @Autowired
-    RatingRepository ratingRepository;
+    private RatingRepository ratingRepository;
 
     public List<Rating> getRatings(){
         return ratingRepository.findAll();

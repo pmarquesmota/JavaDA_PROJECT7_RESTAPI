@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
 @Service
 public class BidListService {
     @Autowired
-    BidListRepository bidListRepository;
+    private BidListRepository bidListRepository;
 
     public List<BidList> getBids(){
         return bidListRepository.findAll();

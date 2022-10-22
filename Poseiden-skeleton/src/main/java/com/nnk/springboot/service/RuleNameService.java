@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
 @Service
 public class RuleNameService {
     @Autowired
-    RuleNameRepository ruleNameRepository;
+    private RuleNameRepository ruleNameRepository;
 
     public List<RuleName> getRuleNames(){
         return ruleNameRepository.findAll();

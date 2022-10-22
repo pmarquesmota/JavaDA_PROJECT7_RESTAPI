@@ -1,4 +1,44 @@
 -------------------------------------------------------------------------------
 Test set: com.nnk.springboot.controller.RuleNameControllerTests
 -------------------------------------------------------------------------------
-Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.603 s - in com.nnk.springboot.controller.RuleNameControllerTests
+Tests run: 11, Failures: 10, Errors: 0, Skipped: 0, Time elapsed: 0.214 s <<< FAILURE! - in com.nnk.springboot.controller.RuleNameControllerTests
+RuleNameList  Time elapsed: 0.004 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.nnk.springboot.controller.RuleNameControllerTests.RuleNameList(RuleNameControllerTests.java:54)
+
+RuleNameDelete  Time elapsed: 0.003 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<404>
+	at com.nnk.springboot.controller.RuleNameControllerTests.RuleNameDelete(RuleNameControllerTests.java:144)
+
+RuleNameAdd  Time elapsed: 0.003 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.nnk.springboot.controller.RuleNameControllerTests.RuleNameAdd(RuleNameControllerTests.java:61)
+
+RuleNamePostUpdateWithoutErrors  Time elapsed: 0.002 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<404>
+	at com.nnk.springboot.controller.RuleNameControllerTests.RuleNamePostUpdateWithoutErrors(RuleNameControllerTests.java:115)
+
+RuleNamePostUpdateWithErrors  Time elapsed: 0.002 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.nnk.springboot.controller.RuleNameControllerTests.RuleNamePostUpdateWithErrors(RuleNameControllerTests.java:123)
+
+RuleNameGetUpdateWithErrors  Time elapsed: 0.003 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<404>
+	at com.nnk.springboot.controller.RuleNameControllerTests.RuleNameGetUpdateWithErrors(RuleNameControllerTests.java:104)
+
+RuleNameValidateWithoutErrors  Time elapsed: 0.003 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<404>
+	at com.nnk.springboot.controller.RuleNameControllerTests.RuleNameValidateWithoutErrors(RuleNameControllerTests.java:71)
+
+RuleNameGetUpdateWithoutErrors  Time elapsed: 0.003 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.nnk.springboot.controller.RuleNameControllerTests.RuleNameGetUpdateWithoutErrors(RuleNameControllerTests.java:93)
+
+RuleNamePostUpdateWithException  Time elapsed: 0.003 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<404>
+	at com.nnk.springboot.controller.RuleNameControllerTests.RuleNamePostUpdateWithException(RuleNameControllerTests.java:133)
+
+RuleNameValidateWithErrors  Time elapsed: 0.004 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.nnk.springboot.controller.RuleNameControllerTests.RuleNameValidateWithErrors(RuleNameControllerTests.java:82)
+

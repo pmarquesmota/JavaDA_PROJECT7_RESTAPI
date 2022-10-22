@@ -1,4 +1,44 @@
 -------------------------------------------------------------------------------
 Test set: com.nnk.springboot.controller.RatingControllerTests
 -------------------------------------------------------------------------------
-Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.623 s - in com.nnk.springboot.controller.RatingControllerTests
+Tests run: 11, Failures: 10, Errors: 0, Skipped: 0, Time elapsed: 0.374 s <<< FAILURE! - in com.nnk.springboot.controller.RatingControllerTests
+ratingPostUpdateWithException  Time elapsed: 0.004 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<404>
+	at com.nnk.springboot.controller.RatingControllerTests.ratingPostUpdateWithException(RatingControllerTests.java:129)
+
+ratingGetUpdateWithoutErrors  Time elapsed: 0.004 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.nnk.springboot.controller.RatingControllerTests.ratingGetUpdateWithoutErrors(RatingControllerTests.java:89)
+
+ratingPostUpdateWithErrors  Time elapsed: 0.002 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.nnk.springboot.controller.RatingControllerTests.ratingPostUpdateWithErrors(RatingControllerTests.java:119)
+
+ratingDelete  Time elapsed: 0.003 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<404>
+	at com.nnk.springboot.controller.RatingControllerTests.ratingDelete(RatingControllerTests.java:140)
+
+ratingGetUpdateWithErrors  Time elapsed: 0.003 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<404>
+	at com.nnk.springboot.controller.RatingControllerTests.ratingGetUpdateWithErrors(RatingControllerTests.java:100)
+
+ratingValidateWithoutErrors  Time elapsed: 0.002 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<404>
+	at com.nnk.springboot.controller.RatingControllerTests.ratingValidateWithoutErrors(RatingControllerTests.java:67)
+
+ratingPostUpdateWithoutErrors  Time elapsed: 0.002 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<404>
+	at com.nnk.springboot.controller.RatingControllerTests.ratingPostUpdateWithoutErrors(RatingControllerTests.java:111)
+
+ratingValidateWithErrors  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.nnk.springboot.controller.RatingControllerTests.ratingValidateWithErrors(RatingControllerTests.java:78)
+
+ratingAdd  Time elapsed: 0.002 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.nnk.springboot.controller.RatingControllerTests.ratingAdd(RatingControllerTests.java:57)
+
+ratingList  Time elapsed: 0.003 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.nnk.springboot.controller.RatingControllerTests.ratingList(RatingControllerTests.java:50)
+

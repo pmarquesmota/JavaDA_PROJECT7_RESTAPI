@@ -11,7 +11,7 @@ import java.util.NoSuchElementException;
 @Service
 public class TradeService {
     @Autowired
-    TradeRepository tradeRepository;
+    private TradeRepository tradeRepository;
 
     public List<Trade> getTrades(){
         return tradeRepository.findAll();
