@@ -1,0 +1,44 @@
+-------------------------------------------------------------------------------
+Test set: com.nnk.springboot.controllers.BidListControllerTests
+-------------------------------------------------------------------------------
+Tests run: 13, Failures: 10, Errors: 0, Skipped: 0, Time elapsed: 0.812 s <<< FAILURE! - in com.nnk.springboot.controllers.BidListControllerTests
+bidListPostUpdateWithException  Time elapsed: 0.008 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<403>
+	at com.nnk.springboot.controllers.BidListControllerTests.bidListPostUpdateWithException(BidListControllerTests.java:178)
+
+bidListValidateWithErrors  Time elapsed: 0.005 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<403>
+	at com.nnk.springboot.controllers.BidListControllerTests.bidListValidateWithErrors(BidListControllerTests.java:117)
+
+bidListValidateWithoutErrors  Time elapsed: 0.005 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<403>
+	at com.nnk.springboot.controllers.BidListControllerTests.bidListValidateWithoutErrors(BidListControllerTests.java:104)
+
+bidListPostUpdateWithoutErrors  Time elapsed: 0.005 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<403>
+	at com.nnk.springboot.controllers.BidListControllerTests.bidListPostUpdateWithoutErrors(BidListControllerTests.java:156)
+
+bidListGetUpdateWithoutErrors  Time elapsed: 0.005 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.nnk.springboot.controllers.BidListControllerTests.bidListGetUpdateWithoutErrors(BidListControllerTests.java:130)
+
+bidListPostUpdateWithErrors  Time elapsed: 0.005 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<403>
+	at com.nnk.springboot.controllers.BidListControllerTests.bidListPostUpdateWithErrors(BidListControllerTests.java:166)
+
+bidListDelete  Time elapsed: 0.003 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<404>
+	at com.nnk.springboot.controllers.BidListControllerTests.bidListDelete(BidListControllerTests.java:191)
+
+bidListGetUpdateWithErrors  Time elapsed: 0.006 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<404>
+	at com.nnk.springboot.controllers.BidListControllerTests.bidListGetUpdateWithErrors(BidListControllerTests.java:143)
+
+bidListAdd  Time elapsed: 0.004 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.nnk.springboot.controllers.BidListControllerTests.bidListAdd(BidListControllerTests.java:92)
+
+bidListList  Time elapsed: 0.005 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.nnk.springboot.controllers.BidListControllerTests.bidListList(BidListControllerTests.java:83)
+

@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: com.nnk.springboot.controllers.HomeControllerTests
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.293 s <<< FAILURE! - in com.nnk.springboot.controllers.HomeControllerTests
+adminShouldReturnOK  Time elapsed: 0.004 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<404>
+	at com.nnk.springboot.controllers.HomeControllerTests.adminShouldReturnOK(HomeControllerTests.java:37)
+
+homeShouldReturnOK  Time elapsed: 0.003 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.nnk.springboot.controllers.HomeControllerTests.homeShouldReturnOK(HomeControllerTests.java:30)
+

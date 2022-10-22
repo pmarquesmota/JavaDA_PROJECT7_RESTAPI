@@ -1,0 +1,48 @@
+-------------------------------------------------------------------------------
+Test set: com.nnk.springboot.controllers.CurvePointControllerTests
+-------------------------------------------------------------------------------
+Tests run: 11, Failures: 11, Errors: 0, Skipped: 0, Time elapsed: 0.365 s <<< FAILURE! - in com.nnk.springboot.controllers.CurvePointControllerTests
+curvePointValidateWihoutErrors  Time elapsed: 0.003 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<403>
+	at com.nnk.springboot.controllers.CurvePointControllerTests.curvePointValidateWihoutErrors(CurvePointControllerTests.java:90)
+
+curvePointList  Time elapsed: 0.005 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.nnk.springboot.controllers.CurvePointControllerTests.curvePointList(CurvePointControllerTests.java:69)
+
+curvePointPostUpdateWithException  Time elapsed: 0.002 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<403>
+	at com.nnk.springboot.controllers.CurvePointControllerTests.curvePointPostUpdateWithException(CurvePointControllerTests.java:162)
+
+failUrl  Time elapsed: 0.007 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<404> but was:<401>
+	at com.nnk.springboot.controllers.CurvePointControllerTests.failUrl(CurvePointControllerTests.java:59)
+
+curvePointGetUpdateWithoutErrors  Time elapsed: 0.005 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.nnk.springboot.controllers.CurvePointControllerTests.curvePointGetUpdateWithoutErrors(CurvePointControllerTests.java:114)
+
+curvePointPostUpdateWithoutErrors  Time elapsed: 0.004 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<403>
+	at com.nnk.springboot.controllers.CurvePointControllerTests.curvePointPostUpdateWithoutErrors(CurvePointControllerTests.java:140)
+
+curvePointGetUpdateWithErrors  Time elapsed: 0.006 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<404>
+	at com.nnk.springboot.controllers.CurvePointControllerTests.curvePointGetUpdateWithErrors(CurvePointControllerTests.java:127)
+
+curvePointDelete  Time elapsed: 0.001 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<302> but was:<404>
+	at com.nnk.springboot.controllers.CurvePointControllerTests.curvePointDelete(CurvePointControllerTests.java:175)
+
+curvePointValidateWithErrors  Time elapsed: 0.003 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<403>
+	at com.nnk.springboot.controllers.CurvePointControllerTests.curvePointValidateWithErrors(CurvePointControllerTests.java:102)
+
+curvePointAdd  Time elapsed: 0.004 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<404>
+	at com.nnk.springboot.controllers.CurvePointControllerTests.curvePointAdd(CurvePointControllerTests.java:78)
+
+curvePointPostUpdateWithErrors  Time elapsed: 0.004 s  <<< FAILURE!
+java.lang.AssertionError: Status expected:<200> but was:<403>
+	at com.nnk.springboot.controllers.CurvePointControllerTests.curvePointPostUpdateWithErrors(CurvePointControllerTests.java:150)
+

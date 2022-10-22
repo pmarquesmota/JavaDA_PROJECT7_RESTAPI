@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8"/>
+	<title>Home</title>
+	<link rel="stylesheet" href="../../css/bootstrap.min.css" >
+</head>
+<body>
+<div class="container">
+
+	<div class="row">
+		<h2>Update Rating</h2>
+	</div>
+
+	<div class="row">
+		<form th:action="@{/rating/update/{id}(id=${rating.id})}" th:object="${rating}" method="post" class="form-horizontal" style="width: 100%">
+			<!--
+			TODO: Create a form to edit the values of Rating, there are 2 buttons: Update data and Cancel to the Rating
+			 -->
+			<div class="form-group">
+				<label for="moodysRating">moodysRating</label>
+				<input type="text" name="moodysRating" th:field="*{moodysRating}" class="form-control" id="moodysRating" aria-describedby="moodysRating">
+				<p th:if="${#fields.hasErrors('moodysRating')}" th:errorclass="error" th:errors="*{moodysRating}"></p>
+			</div>
+			<div class="form-group">
+				<label for="sandPRating">sandPRating</label>
+				<input type="text" name="sandPRating" th:field="*{sandPRating}" class="form-control" id="sandPRating" aria-describedby="sandPRating">
+				<p th:if="${#fields.hasErrors('sandPRating')}" th:errorclass="error" th:errors="*{sandPRating}"></p>
+			</div>
+			<div class="form-group">
+				<label for="fitchRating">fitchRating</label>
+				<input type="text" name="fitchRating" th:field="*{fitchRating}" class="form-control" id="fitchRating" aria-describedby="fitchRating">
+				<p th:if="${#fields.hasErrors('fitchRating')}" th:errorclass="error" th:errors="*{fitchRating}"></p>
+			</div>
+			<div class="form-group">
+				<label for="orderNumber">orderNumber</label>
+				<input type="text" name="orderNumber" th:field="*{orderNumber}" class="form-control" id="orderNumber" aria-describedby="orderNumber">
+				<p th:if="${#fields.hasErrors('orderNumber')}" th:errorclass="error" th:errors="*{orderNumber}"></p>
+			</div>
+			<button type="submit" class="btn btn-primary">Update data</button>
+			<button type="submit" formaction="/rating/list" class="btn btn-primary">Cancel</button>
+		</form>
+	</div>
+
+</div>
+</body>
+</html>

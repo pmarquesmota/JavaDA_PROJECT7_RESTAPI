@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8"/>
+	<title>Home</title>
+	<link rel="stylesheet" href="../../css/bootstrap.min.css" >
+</head>
+<body>
+<div class="container">
+
+	<div class="row">
+		<h2>Update New Rule</h2>
+	</div>
+
+	<div class="row">
+		<form  th:action="@{/ruleName/update/{id}(id=${ruleName.id})}" th:object="${ruleName}" method="post" class="form-horizontal" style="width: 100%">
+			<!--
+			TODO: Create a form to edit the values of RuleName, there are 2 buttons: Update data and Cancel to the RuleName
+			 -->
+			<div class="form-group">
+				<label for="name">name</label>
+				<input type="text" name="name" th:field="*{name}" class="form-control" id="name" aria-describedby="name">
+				<p th:if="${#fields.hasErrors('name')}" th:errorclass="error" th:errors="*{name}"></p>
+			</div>
+			<div class="form-group">
+				<label for="description">description</label>
+				<input type="text" name="description" th:field="*{description}" class="form-control" id="description" aria-describedby="description">
+				<p th:if="${#fields.hasErrors('description')}" th:errorclass="error" th:errors="*{description}"></p>
+			</div>
+			<div class="form-group">
+				<label for="json">json</label>
+				<input type="text" name="json" th:field="*{json}" class="form-control" id="json" aria-describedby="json">
+				<p th:if="${#fields.hasErrors('json')}" th:errorclass="error" th:errors="*{json}"></p>
+			</div>
+			<div class="form-group">
+				<label for="template">template</label>
+				<input type="text" name="template" th:field="*{template}" class="form-control" id="template" aria-describedby="template">
+				<p th:if="${#fields.hasErrors('template')}" th:errorclass="error" th:errors="*{template}"></p>
+			</div>
+			<div class="form-group">
+				<label for="sqlStr">sqlStr</label>
+				<input type="text" name="sqlStr" th:field="*{sqlStr}" class="form-control" id="sqlStr" aria-describedby="sqlStr">
+				<p th:if="${#fields.hasErrors('sqlStr')}" th:errorclass="error" th:errors="*{sqlStr}"></p>
+			</div>
+			<div class="form-group">
+				<label for="sqlPart">sqlPart</label>
+				<input type="text" name="sqlPart" th:field="*{sqlPart}" class="form-control" id="sqlPart" aria-describedby="sqlPart">
+				<p th:if="${#fields.hasErrors('sqlPart')}" th:errorclass="error" th:errors="*{sqlPart}"></p>
+			</div>
+			<button type="submit" class="btn btn-primary">Update data</button>
+			<button type="submit" formaction="/ruleName/list" class="btn btn-primary">Cancel</button>
+
+		</form>
+	</div>
+
+</div>
+</body>
+</html>
