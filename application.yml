@@ -6,3 +6,6 @@ spring:
           github:
             clientId: bde7f6eaa4ab0f3aafe9
             clientSecret: 9907acbfb3d3cdd024ab0f05cf19bba8a40aac14
+            scope:
+              - api.read
+              - ROLE_USER
